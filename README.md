@@ -387,10 +387,17 @@ National
 Urban     
 +           =COUNTIFS($T2:$T463, "> 0", $Z2:$Z463,"<>full access")
             = 93
-          
-We can check for full access by using the not equal operator **(<>)** in our **COUNTIFS()** formula on the “full access” string in the `ARC_n_full`, `ARC_r_full`, and `ARC_u_full` columns.  
-We can check that we’ve considered all countries for the conditions: no value, full access, **ARC = 0**, **ARC < 0**, and **ARC > 0**, by summing the number of countries for each and comparing it to the total number of countries.  
 
+
+  ![pivot2](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/99fb30c1-38b9-4f7c-84b9-6391bd7bbd8f)
+  
+We can check for full access by using the not equal operator **(<>)** in our **COUNTIFS()** formula on the “full access” string in the `ARC_n_full`, `ARC_r_full`, and `ARC_u_full` columns.  
+  
+We can check that we’ve considered all countries for the conditions:  
+no value, full access, ARC = 0, ARC < 0, and ARC > 0, by summing the number of countries for each and comparing it to the total number of countries.  
+  
+
+  
 ***B. Analyzing Differences in ARC between Rural and Urban Populations***  
   
 ### 1.	Calculating ARC Differences:   
@@ -448,20 +455,20 @@ Region
              =VLOOKUP (A2, Regions! $A$1: $B$233,2, FALSE)
            
 
-### Summarize:   
-In the summary sheet, the following summary statistics are calculated in a pivot table for each region:  
-a. The number of countries per region.
-b. The average Annual Rates of Change on a national level per region.
-c. The average Annual Rates of Change in rural areas per region.
-d. The average Annual Rates of Change in urban areas per region.
+### Summarize:     
+**In the summary sheet, the following summary statistics are calculated in a pivot table for each region:**    
+a. The number of countries per region.  
+b. The average Annual Rates of Change on a national level per region.  
+c. The average Annual Rates of Change in rural areas per region.  
+d. The average Annual Rates of Change in urban areas per region.  
 
 ![pivot](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/fc26aecd-d015-48ff-b43c-60e4c880ce28)
 
 
 
-***B.	Visualizing Access by Region:***
-To analyse the connection between national and rural Annual Rates of Change (ARCs) and their correlation with population size across different regions, we generate a visualization that illustrates access by region.  
-The visual representation focuses on comparing the national ARC to the rural ARC, and simultaneously depict the relationship between region-specific population sizes and the national population  
+***B.	Visualizing Access by Region:***  
+To analyse the connection between national and rural Annual Rates of Change (ARCs) and their correlation with population size across different regions, we generate a visualization that illustrates access by region.    
+The visual representation focuses on comparing the national ARC to the rural ARC, and simultaneously depict the relationship between region-specific population sizes and the national population.   
 
 
 
@@ -470,17 +477,30 @@ The visual representation focuses on comparing the national ARC to the rural ARC
 
 
 
-### Observations:
+### Observations:  
 This bubble chart depicts the connection between access to basic water service, measured by annual rates of change (ARCs), across different regions.  
   
-**Each bubble represents a region, with its position determined by two factors:**  
-	**X-axis:** `ARC_n` (National Annual Rate of Change) - This indicates the overall change in access for the entire country.
-	**Y-axis:** `ARC_r` (Rural Annual Rate of Change) - This shows the specific change in access within rural areas of the region.
+**Each bubble represents a region, with its position determined by two factors:**    
+	**X-axis:** `ARC_n` (National Annual Rate of Change) - This indicates the overall change in access for the entire country.  
+	**Y-axis:** `ARC_r` (Rural Annual Rate of Change) - This shows the specific change in access within rural areas of the region.  
   
 **The size of the bubble represents another important factor:**  
 **Pop_n (National Population):** The larger the bubble, the more significant the population of the region it represents.
   
-s.
+
+
+
+
+### C.Weaving ARCs into a Story
+ 
+
+![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/ab8111a9-b813-4ee8-98e1-a045310d68c6)
+
+
+
+
++  The analysis provides actionable insights into the water crisis in Sub-Saharan Africa. Despite some progress, the region is projected to achieve full access to water only by approximately 2080 at the current rate of change.
++  This information forms the basis for a compelling narrative about the urgent need for intervention in Sub-Saharan Africa to address the water crisis. Without significant efforts, millions of Africans will continue to face a scarcity of clean water for the next ~60 years. This narrative underscores the importance of targeted interventions and policy measures to improve water access in the region.
 
 
 
