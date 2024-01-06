@@ -423,11 +423,6 @@ Select the data: Highlight both the "ARC_diff" column (containing the difference
 
 
 
-
-
-
-
-
 IMAGE: Histogram
 ### Summary of Findings:
 1.	This histogram reveals how yearly change rates for two variables differ. Years with small change gaps in both are most common, though some years exhibit much larger discrepancies.
@@ -436,6 +431,56 @@ IMAGE: Histogram
 
 
 
+### 5. Investigating Access to Basic Water Services by Region   
+  
+### 1. Understanding Regional Differences  
+The United Nations categorizes countries into regions to track progress towards Sustainable Development Goals (SDGs). We aim to analyse whether access to basic water services varies across these regions and identify areas needing targeted efforts.  
+  
+***A. Access and Region: Data Preparation***  
+  
+Our initial dataset lacks regional information. To bridge this gap,Import and Add a new sheet containing regional data **(Regions.csv)**.
+  
+**Merge:** Create a new column in the original dataset named `region`. Use a **LOOKUP** function to assign each country its corresponding region based on its country name.
+  
+Region  
++            =VLOOKUP (lookup_value, table_array, col_index_num, [range_lookup])
+             =VLOOKUP (name, Regions!region, 2, FALSE)
+             =VLOOKUP (A2, Regions! $A$1: $B$233,2, FALSE)
+           
+
+### Summarize:   
+In the summary sheet, the following summary statistics are calculated in a pivot table for each region:  
+a. The number of countries per region.
+b. The average Annual Rates of Change on a national level per region.
+c. The average Annual Rates of Change in rural areas per region.
+d. The average Annual Rates of Change in urban areas per region.
+
+![pivot](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/fc26aecd-d015-48ff-b43c-60e4c880ce28)
+
+
+
+***B.	Visualizing Access by Region:***
+To analyse the connection between national and rural Annual Rates of Change (ARCs) and their correlation with population size across different regions, we generate a visualization that illustrates access by region.  
+The visual representation focuses on comparing the national ARC to the rural ARC, and simultaneously depict the relationship between region-specific population sizes and the national population  
+
+
+
+![Access to Water_ Rural vs  National Change by Region (Population Size)](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/aa9bf995-30fb-4265-aff4-1623a6c0e8ac)
+
+
+
+
+### Observations:
+This bubble chart depicts the connection between access to basic water service, measured by annual rates of change (ARCs), across different regions.  
+  
+**Each bubble represents a region, with its position determined by two factors:**  
+	**X-axis:** `ARC_n` (National Annual Rate of Change) - This indicates the overall change in access for the entire country.
+	**Y-axis:** `ARC_r` (Rural Annual Rate of Change) - This shows the specific change in access within rural areas of the region.
+  
+**The size of the bubble represents another important factor:**  
+**Pop_n (National Population):** The larger the bubble, the more significant the population of the region it represents.
+  
+s.
 
 
 
