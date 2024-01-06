@@ -138,11 +138,11 @@ This section delves into exploring the relationship between income groups and ac
 
 ##### 2.	Visualization:    
 o	**Sorting the X-Axis:** To enhance analysis, convert the text `income_group` column to numerical values:  
- + NaN becomes 0.  
- + "Low income" becomes 1.  
- + "Lower middle income" becomes 2.  
- +	"Upper middle income" becomes 3.  
- +	"High income" becomes 4.  
+  +      NaN becomes 0.  
+  +      Low income" becomes 1.  
+  +      Lower middle income" becomes 2.  
+  +      Upper middle income" becomes 3.  
+  +      High income" becomes 4.  
 
   ![PIVOT](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/72116506-e5f1-479c-99db-6fe4c294f212)
 
@@ -152,9 +152,9 @@ o	**Sorting the X-Axis:** To enhance analysis, convert the text `income_group` c
 
 ### 1. Becoming Familiar with the Dataset  
   
-   + To gain further insights, we extended our examination to the **World Health Organization (WHO)/United Nations Children's Fund (UNICEF) Joint Monitoring Programme (JMP) Estimates** on the Use of Water dataset. This dataset spans from the year **2000** to **2020**, broadening the **temporal scope** of our analysis.  
-   + We imported the dataset titled **"Estimates on the Use of Water (2000-2020).csv"** to discern any variations from the dataset used in the preliminary phase of the project.  
-   + Upon reviewing the column names, a notable alteration was identified: the removal of the `income_group` feature and the addition of a `year` feature.  
+   a) To gain further insights, we extended our examination to the **World Health Organization (WHO)/United Nations Children's Fund (UNICEF) Joint Monitoring Programme (JMP) Estimates** on the Use of Water dataset. This dataset spans from the year **2000** to **2020**, broadening the **temporal scope** of our analysis.  
+   b) We imported the dataset titled **"Estimates on the Use of Water (2000-2020).csv"** to discern any variations from the dataset used in the preliminary phase of the project.  
+   c) Upon reviewing the column names, a notable alteration was identified: the removal of the `income_group` feature and the addition of a `year` feature.  
  
 ### 2. Investigating Year Representation   
 
@@ -176,7 +176,7 @@ o	**Sorting the X-Axis:** To enhance analysis, convert the text `income_group` c
 
 If Statement   
 Y_diff    
-    `= IF(A3=A2,B3-B2,"")`  
++          `= IF(A3=A2,B3-B2,"")`  
   
 ### 3.	Detecting Duplicate Rows:
    
@@ -186,16 +186,16 @@ Y_diff
 •	The assumption is that if `y_diff` equals 0, it signifies duplicate rows as it implies the same year for consecutive entries of the same country.  
     
 ### 4.	Summary Sheet Analysis:  
-•	On the newly created summary sheet, the **average**, **minimum**, and **maximum** `year differences` are calculated, rounded to two decimal places.  
+On the newly created summary sheet, the **average**, **minimum**, and **maximum** `year differences` are calculated, rounded to two decimal places.  
   
 Average Year Difference:    
-               `= ROUND (AVERAGE (y_diff), 2)` 
+  +             `= ROUND (AVERAGE (y_diff), 2)` 
           
  Minimum Year Difference:  
-                `= ROUND (MIN (y_diff), 2)`
+  +              `= ROUND (MIN (y_diff), 2)`
             
  Maximum Year Difference:  
-                `= ROUND (MAX (y_diff), 2)`   
+  +              `= ROUND (MAX (y_diff), 2)`   
              
 •	The average year difference is found to be **4.8**, the minimum is **1**, and the maximum is **5**.  
   
