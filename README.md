@@ -168,36 +168,38 @@ o	**Sorting the X-Axis:** To enhance analysis, convert the text `income_group` c
 
 
 
-3.	Identifying Data Collection Frequency:
-•	A preliminary assessment reveals that data entries were not recorded for every year in each country. To account for this variability when examining temporal trends, we must determine if data were collected only twice per country.
-B. Calculating Average Year Difference
-1.	Creating the Year Difference Feature:
-•	In the dataset sheet, a new column named "y_diff" (year difference) is introduced to calculate the difference in years between consecutive entries for each country.
-2.	Conditional Calculation of Year Difference:
-•	An if statement is implemented to subtract the second year from the first year only if the country name matches between consecutive rows. This ensures that the y_diff is calculated only for entries pertaining to the same country.
+### 3.	Identifying Data Collection Frequency:  
+  +	A preliminary assessment reveals that data entries were not recorded for every year in each country. To account for this variability when examining temporal trends, we must determine if data were collected only twice per country.  
+### 1. Calculating Average Year Difference 
+  + In the dataset sheet, a new column named `y_diff` (year difference) is introduced to calculate the difference in years between consecutive entries for each country.    
+  + An if statement is implemented to subtract the second year from the first year only if the country name matches between consecutive rows. This ensures that the y_diff is calculated only for entries pertaining to the same country.    
 
-
-
-
-
-
-If Statement 
-Y_diff
-= IF(A3=A2,B3-B2,"") 
-3.	Detecting Duplicate Rows:
-•	By checking for instances where y_diff equals 0, we can identify and subsequently remove duplicate rows from the dataset.
-Reasoning Behind y_diff = 0:
-•	The assumption is that if y_diff equals 0, it signifies duplicate rows as it implies the same year for consecutive entries of the same country.
-4.	Summary Sheet Analysis:
-•	On the newly created summary sheet, the average, minimum, and maximum year differences are calculated, rounded to two decimal places.
-Average Year Difference:
-        = ROUND (AVERAGE (y_diff), 2)
- Minimum Year Difference:
-          = ROUND (MIN (y_diff), 2)
- Maximum Year Difference:
-           = ROUND (MAX (y_diff), 2) 
-•	The average year difference is found to be 4.8, the minimum is 1, and the maximum is 5.
-5.	Histogram Creation:
-•	In the same sheet, a histogram of the year column is generated to visualize the distribution of years in the dataset.
-•	 Under customize settings, set max for horizontal axis to 2021
+If Statement   
+Y_diff    
+    `= IF(A3=A2,B3-B2,"")`  
+  
+### 3.	Detecting Duplicate Rows:
+   
+•	By checking for instances where `y_diff` equals 0, we can identify and subsequently remove duplicate rows from the dataset.  
+  
+### Reasoning Behind y_diff = 0:  
+•	The assumption is that if `y_diff` equals 0, it signifies duplicate rows as it implies the same year for consecutive entries of the same country.  
+    
+### 4.	Summary Sheet Analysis:  
+•	On the newly created summary sheet, the **average**, **minimum**, and **maximum** `year differences` are calculated, rounded to two decimal places.  
+  
+Average Year Difference:    
+               `= ROUND (AVERAGE (y_diff), 2)` 
+          
+ Minimum Year Difference:  
+                `= ROUND (MIN (y_diff), 2)`
+            
+ Maximum Year Difference:  
+                `= ROUND (MAX (y_diff), 2)`   
+             
+•	The average year difference is found to be **4.8**, the minimum is **1**, and the maximum is **5**.  
+  
+### 5.	Histogram Creation:  
+•	In the same sheet, a histogram of the year column is generated to visualize the distribution of years in the dataset.  
+•	 Under customize settings, set max for horizontal axis to **2021**  
 
