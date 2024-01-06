@@ -146,5 +146,58 @@ o	**Sorting the X-Axis:** To enhance analysis, convert the text `income_group` c
 
   ![PIVOT](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/72116506-e5f1-479c-99db-6fe4c294f212)
 
+---
+### Part 2: Transforming the Data  
+  
 
+### 1. Becoming Familiar with the Dataset  
+  
+   + To gain further insights, we extended our examination to the **World Health Organization (WHO)/United Nations Children's Fund (UNICEF) Joint Monitoring Programme (JMP) Estimates** on the Use of Water dataset. This dataset spans from the year **2000** to **2020**, broadening the **temporal scope** of our analysis.  
+   + We imported the dataset titled **"Estimates on the Use of Water (2000-2020).csv"** to discern any variations from the dataset used in the preliminary phase of the project.  
+   + Upon reviewing the column names, a notable alteration was identified: the removal of the `income_group` feature and the addition of a `year` feature.  
+ 
+### 2. Investigating Year Representation   
+
+### 1.	Determining the Years Recorded: 
+   + To understand the temporal scope of our dataset, we first investigate the years during which data were recorded.  
+   +	To observe the representation of years for each country, we employ a meticulous sorting method. This involves freezing the header row to maintain context and using the **Data > Sort range > Advanced range sort** options to sort by `country name` (Column A) and then by `year` (Column B).  
+
+![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/725a84df-625b-45d0-8034-ec4e1bf6d478)
+
+
+
+
+
+3.	Identifying Data Collection Frequency:
+•	A preliminary assessment reveals that data entries were not recorded for every year in each country. To account for this variability when examining temporal trends, we must determine if data were collected only twice per country.
+B. Calculating Average Year Difference
+1.	Creating the Year Difference Feature:
+•	In the dataset sheet, a new column named "y_diff" (year difference) is introduced to calculate the difference in years between consecutive entries for each country.
+2.	Conditional Calculation of Year Difference:
+•	An if statement is implemented to subtract the second year from the first year only if the country name matches between consecutive rows. This ensures that the y_diff is calculated only for entries pertaining to the same country.
+
+
+
+
+
+
+If Statement 
+Y_diff
+= IF(A3=A2,B3-B2,"") 
+3.	Detecting Duplicate Rows:
+•	By checking for instances where y_diff equals 0, we can identify and subsequently remove duplicate rows from the dataset.
+Reasoning Behind y_diff = 0:
+•	The assumption is that if y_diff equals 0, it signifies duplicate rows as it implies the same year for consecutive entries of the same country.
+4.	Summary Sheet Analysis:
+•	On the newly created summary sheet, the average, minimum, and maximum year differences are calculated, rounded to two decimal places.
+Average Year Difference:
+        = ROUND (AVERAGE (y_diff), 2)
+ Minimum Year Difference:
+          = ROUND (MIN (y_diff), 2)
+ Maximum Year Difference:
+           = ROUND (MAX (y_diff), 2) 
+•	The average year difference is found to be 4.8, the minimum is 1, and the maximum is 5.
+5.	Histogram Creation:
+•	In the same sheet, a histogram of the year column is generated to visualize the distribution of years in the dataset.
+•	 Under customize settings, set max for horizontal axis to 2021
 
