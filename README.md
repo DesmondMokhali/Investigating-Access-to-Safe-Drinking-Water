@@ -105,11 +105,11 @@ We then created a box and whisker diagrams for each service level percentage, ut
   National population size `pop_n` for national analysis, urban population size `pop_u_val` for urban analysis, and rural population size `pop_r` for rural analysis.  
     
 **Dependent Variables:**   
-Percentage access levels for each service category:
-•	`wat_bas_x_`: Basic access
-•	`wat_lim_x_`: Limited access
-•	`wat_unimp_x_`: Unimproved access
-•	`wat_sur_x_`: Surface water
+Percentage access levels for each service category:  
+  +	`wat_bas_x_`: Basic access  
+  +	`wat_lim_x_`: Limited access  
+  +	`wat_unimp_x_`: Unimproved access  
+  +	`wat_sur_x_`: Surface water  
 
 1.	National Population Size Impact:
    
@@ -174,6 +174,11 @@ o	**Sorting the X-Axis:** To enhance analysis, convert the text `income_group` c
   + In the dataset sheet, a new column named `y_diff` (year difference) is introduced to calculate the difference in years between consecutive entries for each country.    
   + An if statement is implemented to subtract the second year from the first year only if the country name matches between consecutive rows. This ensures that the y_diff is calculated only for entries pertaining to the same country.    
 
+![y_dif_flow](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/762891d7-6ad1-49a4-a783-01611b4b2a80)  ![y_dif_pseudo](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/74457b08-00a8-496b-8aa1-c621774a1a49)
+
+
+
+
 If Statement   
 Y_diff    
 +          `= IF(A3=A2,B3-B2,"")`  
@@ -189,17 +194,249 @@ Y_diff
 On the newly created summary sheet, the **average**, **minimum**, and **maximum** `year differences` are calculated, rounded to two decimal places.  
   
 Average Year Difference:    
-  +             `= ROUND (AVERAGE (y_diff), 2)` 
+  +             = ROUND (AVERAGE (y_diff), 2)
           
  Minimum Year Difference:  
-  +              `= ROUND (MIN (y_diff), 2)`
+  +              = ROUND (MIN (y_diff), 2)
             
  Maximum Year Difference:  
-  +              `= ROUND (MAX (y_diff), 2)`   
+  +              = ROUND (MAX (y_diff), 2)   
              
-•	The average year difference is found to be **4.8**, the minimum is **1**, and the maximum is **5**.  
+The average year difference is found to be **4.8**, the minimum is **1**, and the maximum is **5**.  
   
 ### 5.	Histogram Creation:  
 •	In the same sheet, a histogram of the year column is generated to visualize the distribution of years in the dataset.  
 •	 Under customize settings, set max for horizontal axis to **2021**  
+![Year distribution](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/58bc5339-67e7-4dbf-8cde-c000886812ea)
+
+### Summary of Findings:
+The analysis indicates that the dataset exhibits a variability in data recording years, with an average difference of 4.8 years between consecutive entries. The histogram visualization further illustrates the distribution of years in the dataset
+
+  
+### 3. Investigating Annual Rates of Change (ARC)  
+
+### 1.	Understanding the Concept of ARC:  
+Annual Rates of Change (ARC) are employed to assess whether the proportion of access to drinking water is experiencing a decline or improvement. ARC is calculated as the average yearly change rate of a variable over a specified time period.  
+  
+**The formula for ARC is expressed as follows:**  
+ ARC_x  
++      = (wat_bas_x(n+1) - wat_bas_x(n)) / (year(n+1) - year(n))
+  
+Here, `x` represents the different areas, with `ARC_n` for national, `ARC_r` for rural, and `ARC_u` for urban areas.  
+
+
+### 2.	Creating ARC Columns:
+Three new columns, namely `ARC_n`, `ARC_r`, and `ARC_u`, are added to the dataset sheet to represent the Annual Rates of Change for **national**, **rural**, and **urban** populations.  
+  
+### 3.	Calculating ARC for Each Area:  
+ARC values are computed for each area by applying the formula only when the country name in the next row is the same as the country name in the current row.  
+
+
+![arc_flow](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/4e45860d-6eef-479c-b3ab-70adcc42e274)
+
+
+![arc_pseudo](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/2bdc2767-8e94-4886-b454-11b15a2d3609)
+
+
+**Pseudocode for the IF Statement:**
+  
++       = IF($A2=$A3,($E3-$E2)/($B3-$B2),""),"null"
+
+    
+Similar formulas are applied for `ARC_r` and `ARC_u`, considering the corresponding columns.
+  
+### 4.	Handling Errors:
+The IFERROR function is integrated into the IF statements for `ARC_n`, `ARC_r`, and `ARC_u` to replace error values with **"null"**.  
+    
+### Observing #VALUE! Errors:
+The errors are observed in rows where one or both of the `wat_bas_x` rows are `"null."` The IFERROR function is added to mitigate these errors.  
+  
+**Conditional Statement for Error Handling:**
++     = IFERROR(IF($A2=$A3,($E3-$E2)/($B3-$B2),""),"null") 
+
+  
+### 5.	Calculating Averages, Minimums, and Maximums:
+On the summary sheet, the average, minimum, and maximum values for ARC_n, ARC_r, and ARC_u are calculated. 
+  
+**Average ARC_n:**   
+   +     = ROUND (AVERAGE (ARC_n),2)
+
+  
+ **Average ARC_r:** 
+   +     = ROUND (AVERAGE (ARC_r),2)
+       
+**Average ARC_u:**    
+   +      = ROUND (AVERAGE (ARC_u),2)
+       
+The **average ARC** values are found to be **0.28**, **0.48**, and **0.15** for national, rural, and urban populations, respectively.
+
+  
+### 4. Investigating Access by Area  
+#### A.	What does the change in access to basic water look like for different areas?  
+#### B.	How does the ARC differ between rural and urban populations?  
+  
+***A.	Analyzing Change in Access to Basic Water***
+  
+### 1.	Counting Null Values:  
+In the summary sheet, calculate the number of countries with missing ARC values for national `ARC_n`, rural `ARC_r`, and urban `ARC_u` areas.  
+   
+**Null Values**   
+  
+ARC_x:  
++           = COUNTIF (arc_x, "null")
+  
+ ARC_n:  
++           = COUNTIF ('Estimates of the use of water (2000-2020)'!$R2:$R463, "null")
+            = 2
+          
+ ARC_r:  
+ +          = COUNTIF ('Estimates of the use of water (2000-2020)'!$S2:$S463, "null")
+            = 64
+           
+ ARC_u:  
+ +            = COUNTIF ('Estimates of the use of water (2000-2020)'!$T4:$T465, "null")
+              = 50
+
+  
+### 2.	Counting Full Access:
+Three new columns, namely `wat_bas_n (rounded)`, `wat_bas_r (rounded)`, and `wat_bas_u (rounded)`, are created in the original dataset sheet by rounding the original access to basic water services columns to the nearest whole number. The IFERROR function is employed to handle potential errors during this rounding process, returning the rounded value if successful or the string `null` if an error occurs.  
+  
+wat_bas_x (rounded):
++         = IFERROR(ROUND(wat_bas_x, 0), "null")
+    
+wat_bas_n (rounded):
++        = IFERROR(ROUND(E2, 0), "null")  
+            
+ wat_bas_r (rounded):
+ +        = IFERROR(ROUND(I2, 0), "null")
+             
+wat_bas_u (rounded): 
+  +       = IFERROR(ROUND(M2, 0), "null")
+             
+ 
+**Additionally**, columns `ARC_n_full`, `ARC_r_full`, and `ARC_u_full` are created to determine "full access" based on conditions.
+IF the country names are the same AND that both `wat_bas_n (rounded)` features for that country are **> 99%** for both years. Return “full access” if it is true.
+
++      START
+       If name(n) == name(n+1) AND wat_bas_n (rounded)(n) == 100 AND wat_bas_n (rounded)(n+1) == 100
+       then
+       ARC_n_full = “full access”
+       End if
+       END
+  
+ARC_n_full:   
++            =IF(AND($A3 = $A2,W2 = 100,W3 =100),"full access","")
+    
+ ARC_r_full:
+ +           =IF(AND($A3 = $A2,V2 = 100,V3 =100),"full access","")
+     
+ ARC_u_full:
+ +            =IF(AND($A3 = $A2,W2 = 100,W3 =100),"full access","")
+  
+The number of countries with full access per population is then calculated in the summary sheet.
+  
+Full Access ARC_n:
++            =COUNTIF($X2:$X463, "full access") 
+             = 62
+           
+Full Access ARC_r: 
++            =COUNTIF($Y2:$Y463, "full access") 
+             = 29
+           
+Full Access ARC_u:
++            =COUNTIF($Z2:$Z463, "full access") 
+             = 55
+  
+### 3.	Counting Zero, Negative, and Positive ARCs:  
+The number of countries with ARC values equal to zero, less than zero, and greater than zero is calculated for national, rural, and urban populations.  
+  
+National  
++           =COUNTIFS($R2:$R463, "= 0", $X2:$X463,"<>full access")
+            = 16
+ Rural  
++           =COUNTIFS('$S2:$S463, "=0", $Y2:$Y463,"<>full access")
+            = 5
+Urban  
++           =COUNTIFS($T2:$T463, "= 0", $Z2:$Z463,"<>full access")
+            = 7
+          
+Number of countries where ARC < 0 and doesn’t have full access for each of the population types: national, rural, and urban  
+  
+National  
++           =COUNTIFS($R2:$R463, "< 0", $X2:$X463,"<>full access")
+            = 16
+          
+ Rural    
++           =COUNTIFS($S2:$S463, "<0", $Y2:$Y463,"<>full access")
+            = 17
+          
+Urban  
++           =COUNTIFS($T2:$T463, "< 0", $Z2:$Z463,"<>full access")
+            = 26
+  
+Calculate the number of countries where ARC > 0 and doesn’t have full access for each of the population types.  
+  
+National  
++           =COUNTIFS($R2:$R463, "> 0", '$X2:$X463,"<>full access")
+            = 135
+          
+ Rural  
++           =COUNTIFS($S2:$S463, "> 0", $Y2:$Y463,"<>full access")
+            = 116
+          
+Urban     
++           =COUNTIFS($T2:$T463, "> 0", $Z2:$Z463,"<>full access")
+            = 93
+          
+We can check for full access by using the not equal operator **(<>)** in our **COUNTIFS()** formula on the “full access” string in the `ARC_n_full`, `ARC_r_full`, and `ARC_u_full` columns.  
+We can check that we’ve considered all countries for the conditions: no value, full access, **ARC = 0**, **ARC < 0**, and **ARC > 0**, by summing the number of countries for each and comparing it to the total number of countries.  
+
+***B. Analyzing Differences in ARC between Rural and Urban Populations***  
+  
+### 1.	Calculating ARC Differences:   
+A new feature called `ARC_diff` is created in the dataset sheet to calculate the difference between rural ARC `ARC_r` and urban ARC `ARC_u` for every second row.  
+
+ARC_diff:  
++            = IF (AND (ARC_r <>"“, ARC_u<>""),ARC_r-ARC_u,"")
+             = IF (AND (S2 <>"“, T2<>""),S2-T2,"")
+
+  
+### 2.	Handling Errors:  
+The formula is adjusted to account for #VALUE! errors.  
+  
+ARC_diff 
++            = IFERROR (IF (AND (ARC_r <>””, ARC_u<>""), ARC_r- ARC_u,""), "null")
+    
+### 3.	Histogram Creation:  
+Select the data: Highlight both the "ARC_diff" column (containing the differences in annual rates of change) and the "Arc_n_full" column (containing the corresponding national full annual rates of change).  
+1)	Insert the histogram  
+2)	Configure the axes, ensure that `Arc_diff` is assigned as the "Series" (values for the bars) and `Arc_n_full` is assigned as the "Horizontal (Category) Axis Labels."  
+
+
+
+
+
+![Distribution of Differences in Annual Rates of Change (Rural vs  Urban)](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/278a8719-9e79-4892-b712-41a37a05c408)
+
+
+
+
+
+
+
+
+
+
+
+IMAGE: Histogram
+### Summary of Findings:
+1.	This histogram reveals how yearly change rates for two variables differ. Years with small change gaps in both are most common, though some years exhibit much larger discrepancies.
+2.	While the specific direction of change remains unclear (both variables could increase/decrease), the range of possibilities spans from -2.50 to 2.50 percentage points.
+3.	Overall, the data suggests diversity in year-on-year change patterns between these two variables.
+
+
+
+
+
+
 
