@@ -83,16 +83,16 @@ D.	**Import** the file into a blank spreadsheet.
 **2.1. Addressing Semicolon Separation:**  
 The original data used semicolon separators, causing header separation issues during import.   
   
-We tackled this in two steps:  
+**We tackled this in two steps:**  
    
-**I.	Utilizing Google Sheets' "Text to columns" function:** This efficiently split headers based on semicolons.  
+  **I.	Utilizing Google Sheets' "Text to columns" function:** This efficiently split headers based on semicolons.  
 
 ![data split](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/65b20195-f968-4ac2-ab00-be9d0547516b)
 
 
-**II.	Manual validation and cleanup:** We used **CTRL + F (Command + F)** to find and fix any remaining semicolons within cell values, repeating the "Text to columns" split where necessary.   
+  **II.	Manual validation and cleanup:** We used **CTRL + F (Command + F)** to find and fix any remaining semicolons within cell values, repeating the *"Text to columns"* split where necessary.   
   
-III. We came across five instances in cell **B24**, **K29**, **D48**, **G113**, **L139**  
+   **III.** We came across five instances in cell **B24**, **K29**, **D48**, **G113**, **L139**  
   
 **Important note:** Applying *"Text to columns"* to single cells overwrites adjacent columns. We applied it to entire columns, ensuring automatic data shifts.    
     
@@ -111,8 +111,9 @@ To ensure successful import and data completeness, we performed the following ch
 
 
 ### 3. Comparing world population estimates with JMP data to understand the bigger picture.    
-  
-Here, we calculated the total national population using the `pop_n` feature (in thousands) and converted it to billions for comparison with the estimated global population:   
+
+**3.1. Global Population Comparison**  
+To facilitate a meaningful comparison, a new sheet named *"Global 2020 Report"* was created. Here, we calculated the total national population using the `pop_n` feature (in thousands) and converted it to billions for comparison with the estimated global population:     
   
 **Estimated Global Population (billion)**
 *                                  = 7.821 billion   
@@ -127,12 +128,78 @@ Here, we calculated the total national population using the `pop_n` feature (in 
                                     
   This ensures consistent unit representation for accurate analysis.  
     
-### 4. Analysing the distribution of urban vs. rural populations.
-Delved deeper into data and calculated the Total urban population, the Estimated urban share, Total urban share, Difference in the estimated and the Global population, estimated and Urban population,and estimated and Urban share.  
+### 4. Analysing the distribution of urban vs. rural populations.  
+  
+### 4.1. Urban Population Assessment  
+To delve deeper into urban populations, a new feature, `pop_u_val`, was added to the original dataset. This represents the number of people living in urban areas per country and was calculated as:  
+
+pop_u_val 
++         = (pop_u /100) * pop_n
+          = (D2/100) * C2
+  
+Note that we divided `pop_u` (percentage) by 100 before multiplying.  
+  
+### 3.2. Estimating World Urban Population    
+The estimated world urban population in **2020** was **55%** of the total population (**7.821 billion** based on the *"Global 2020 Report"* sheet). This calculation looks like:     
+  
+Estimated Urban Population (billion) 
++                                   = (55/100) * 7.821
+                                    = 4.30155
+                                  
+**Additionally**, the urban share in the *"Global 2020 Report"* sheet was calculated using the total national population `pop_n` and the total urban population `pop_u_val`.   
+  
+%Total Urban share 
++                 = (%Estimated Urban share/ Total Global Population (billion)) * 100
+                  = (B3/B1) * 100
+                  = 56.18954386
+                
+### 3.2 Quantifying Differences with Percentage Difference  
+  
+To assess the differences between our dataset's population and the estimated world population, as well as in urban population figures, we employ the powerful tool of percentage difference. This metric reveals the relative magnitude of the difference between two values, expressed as a percentage of their average.  
+**Formula and Calculation:**  
+
+![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/80f40115-1418-48a8-8086-2bed183f0427)
+  
+**The standard percentage difference formula is:**  
+% Diff
++      = (ABS (Value1 - Value2) / AVERAGE (Value1, Value2)) * 100
+    
+**where:**  
++ ABS (Value1 - Value2) signifies the absolute difference between the two values, removing any positive/negative directionality.  
++ AVERAGE (Value1, Value2) represents the average of the two values.
+    
+**Applying the Formula:**  
+  
+### 3.2.1 Dataset vs. Estimated World Population:   
+Let's calculate the percentage difference between the total population in our dataset (cell B1) and the estimated world population in 2020 (cell B2):  
+  
+% Diff Global Population   
++                     = (ABS(B1-B2) / AVERAGE (B1:B2)) * 100
+                      = 0.4395894719
+                    
+This equation reveals the relative difference between our dataset and the expected global population as a percentage.  
+   
+### 3.2.2	Urban Population Comparison:    
+Similarly, we can calculate the percentage difference for both total urban populations and urban share percentages:  
+    
+**I.	Total Urban Population:**  
+% Diff Urban Population   
++                    = (ABS (Urban Population in Dataset - Estimated Urban Population) /  
+                       AVERAGE (Urban Population in Dataset, Estimated Urban Population)) * 100  
+                     = (ABS(B3-B4)/AVERAGE (B3:B4)) *100  
+                     = 1.700119067  
+    
+**II.	Urban Share Percentage:**    
+% Diff Urban Share   
++                  = (ABS (Urban Share % in Dataset - Estimated Urban Share %) /    
+		      AVERAGE (Urban Share % in Dataset, Estimated Urban Share %)) * 100      
+                   = (ABS(B5-B6)/AVERAGE (B5:B6)) *100    
+                   = 2.139668561    
+    
   
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/12029751-288d-45c8-8920-5f460ad2d511)
-
-  Used a **line chart** to analyse the share of national populations living in urban versus rural areas with a visualization  
+  
+Used a **line chart** to analyse the share of national populations living in urban versus rural areas with a visualization  
   
   ![National population versus urban and rural share 2020](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/886d842d-542f-4554-a5ed-4440dd8c041c)
 
