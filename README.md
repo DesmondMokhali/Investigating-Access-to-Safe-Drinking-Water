@@ -57,7 +57,7 @@ This project investigates access to safe and affordable drinking water, focusing
 
 ### 1. Data Familiarization:
 **Dataset:** WHO/UNICEF JMP Estimates on the Use of Water (2020)  
-**Features:**  
+**Features:**
    + Country name `name`
    + Income group `income_group`
    + Population size estimates `pop_n` and shares `pop_u` for national and urban areas    
@@ -72,29 +72,35 @@ Subscripts refer to national (n), rural (r), and urban (u) classifications
   
 ### 2. Data Import and Preprocessing    
   
-Ensuring data integrity and handling challenges in the initial phase were crucial for subsequent analyses. This section details the systematic approach taken to import and preprocess the raw data.  
+This section details the systematic approach taken to import and preprocess the raw data.  
   
 A.	Make sure that you have access to a **Google account**.  
 B.	Create a **new blank spreadsheet** with Google Sheets.  
-C.	**Download** the Estimates on the use of water (2020) dataset as a CSV.  
+C.	Download the **Estimates on the use of water (2020)** dataset as a CSV.  
 D.	**Import** the file into a blank spreadsheet.  
   
 **2.1. Addressing Semicolon Separation:**  
 The original data used semicolon separators, causing header separation issues during import. We tackled this in two steps:  
    
-I.	Utilizing Google Sheets' *"Text to columns"* function: This efficiently split headers based on semicolons.  
+**I.	Utilizing Google Sheets' "Text to columns" function:** This efficiently split headers based on semicolons.  
 
-  ![data split2](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/b8298b95-e16b-45b6-aff0-ac1fa39fc519)
+![data split](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/65b20195-f968-4ac2-ab00-be9d0547516b)
 
-II.	Manual validation and cleanup: We used CTRL + F (Command + F) to find and fix any remaining semicolons within cell values, repeating the "Text to columns" split where necessary.  
-We came across five instances in cell B24, K29, D48, G113, L139  
-Important note: Applying "Text to columns" to single cells overwrites adjacent columns. We applied it to entire columns, ensuring automatic data shifts.  
+
+**II.	Manual validation and cleanup:** We used **CTRL + F (Command + F)** to find and fix any remaining semicolons within cell values, repeating the "Text to columns" split where necessary.   
   
-2.2. Verifying Data Completeness:
+III. We came across five instances in cell **B24**, **K29**, **D48**, **G113**, **L139**  
+  
+**Important note:** Applying *"Text to columns"* to single cells overwrites adjacent columns. We applied it to entire columns, ensuring automatic data shifts.    
+    
+**2.2. Verifying Data Completeness:**  
+  
 To ensure successful import and data completeness, we performed the following checks:
-•	Feature presence: We verified that each of the 16 expected features (columns A-P) had a corresponding column name.
-•	Data completeness: We introduced a new feature, value_cnt, using the COUNTA() function (e.g., =COUNTA(A2:P2)) to count non-empty cells in each row, encompassing both text and numerical entries.
+  
++ **Feature presence:** We verified that each of the 16 expected features (columns A-P) had a corresponding column name.  
++ **Data completeness:** We introduced a new feature, `value_cnt`, using the COUNTA() function (e.g., =COUNTA(A2:P2)) to count non-empty cells in each row, encompassing both text and numerical entries.
 
+![counta22](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7c697d40-bf7d-40d0-8202-f8d270ae95dd)
 
 
 
