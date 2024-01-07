@@ -55,26 +55,75 @@ This project investigates access to safe and affordable drinking water, focusing
      
   ## Part 1
 
+### 1. Data Familiarization:
+**Dataset:** WHO/UNICEF JMP Estimates on the Use of Water (2020)  
+**Features:**  
+   + Country name `name`
+   + Income group `income_group`
+   + Population size estimates `pop_n` and shares `pop_u` for national and urban areas    
++ Access to drinking water categories:     
+     + Basic `wat_bas_*`   
+     + Limited `wat_lim_*`    
+     + Unimproved `wat_unimp_*`    
+     + Surface `wat_sur_*`
+         
+Subscripts refer to national (n), rural (r), and urban (u) classifications  
+
+  
+### 2. Data Import and Preprocessing    
+  
+Ensuring data integrity and handling challenges in the initial phase were crucial for subsequent analyses. This section details the systematic approach taken to import and preprocess the raw data.  
+  
+A.	Make sure that you have access to a **Google account**.  
+B.	Create a **new blank spreadsheet** with Google Sheets.  
+C.	**Download** the Estimates on the use of water (2020) dataset as a CSV.  
+D.	**Import** the file into a blank spreadsheet.  
+  
+**2.1. Addressing Semicolon Separation:**  
+The original data used semicolon separators, causing header separation issues during import. We tackled this in two steps:  
+   
+I.	Utilizing Google Sheets' *"Text to columns"* function: This efficiently split headers based on semicolons.  
+
+  ![data split2](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/b8298b95-e16b-45b6-aff0-ac1fa39fc519)
+
+II.	Manual validation and cleanup: We used CTRL + F (Command + F) to find and fix any remaining semicolons within cell values, repeating the "Text to columns" split where necessary.  
+We came across five instances in cell B24, K29, D48, G113, L139  
+Important note: Applying "Text to columns" to single cells overwrites adjacent columns. We applied it to entire columns, ensuring automatic data shifts.  
+  
+2.2. Verifying Data Completeness:
+To ensure successful import and data completeness, we performed the following checks:
+•	Feature presence: We verified that each of the 16 expected features (columns A-P) had a corresponding column name.
+•	Data completeness: We introduced a new feature, value_cnt, using the COUNTA() function (e.g., =COUNTA(A2:P2)) to count non-empty cells in each row, encompassing both text and numerical entries.
+
+
+
+
+
+
+
 ### 1. Comparing world population estimates with JMP data to understand the bigger picture.    
   
 Here, we calculated the total national population using the `pop_n` feature (in thousands) and converted it to billions for comparison with the estimated global population:   
   
-**Estimated Global Population (billion)** = `7.821 billion`   
+**Estimated Global Population (billion)**
+*                                  = 7.821 billion   
    
-**Total Global Population (billion)** = `SUM (pop_n) / 1000000`  
-                                  = `SUM ('Estimates on the use of water (2020)’! C2:C214)/1000000`  
-                                  = `7.786695108`  
+**Total Global Population (billion)** 
+  *                                 = SUM (pop_n) / 1000000  
+                                    = SUM ('Estimates on the use of water (2020)’! C2:C214)/1000000  
+                                    = 7.786695108  
+			 	    
 ![Tot glob pop](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/9e24e8b0-5692-4d6d-95ae-6a95e0dfb24e)
 
                                     
   This ensures consistent unit representation for accurate analysis.  
     
 ### 2. Analysing the distribution of urban vs. rural populations.
-delved deeper into data and calculated the Total urban population, the Estimated urban share, Total urban share, Difference in the estimated and the Global population, estimated and Urban population,and estimated and Urban share.  
+Delved deeper into data and calculated the Total urban population, the Estimated urban share, Total urban share, Difference in the estimated and the Global population, estimated and Urban population,and estimated and Urban share.  
   
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/12029751-288d-45c8-8920-5f460ad2d511)
 
-  Used a line chart to analyse the share of national populations living in urban versus rural areas with a visualization  
+  Used a **line chart** to analyse the share of national populations living in urban versus rural areas with a visualization  
   
   ![National population versus urban and rural share 2020](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/886d842d-542f-4554-a5ed-4440dd8c041c)
 
@@ -83,8 +132,9 @@ delved deeper into data and calculated the Total urban population, the Estimated
 ### 3 Identifying trends and patterns in water access across different regions.
 This section delves into analysing national access to different water service levels (basic, limited, etc.) using both descriptive statistics and visualizations.
 
-**Descriptive Statistics:** We calculate various descriptive statistics for each service level percentage:  
-  
+**Descriptive Statistics:**     
+We calculate various descriptive statistics for each service level percentage:    
+    
 ![Central tendency](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/1081d77f-00c3-4542-8900-b5d2e07c3cd6)
 
 We then created a box and whisker diagrams for each service level percentage, utilizing Google Sheets' candlestick chart functionality to construct 12 box and whisker plots, one for each feature-area combination.
@@ -93,10 +143,10 @@ We then created a box and whisker diagrams for each service level percentage, ut
 
 
 ### National vs. Urban vs. Rural:  
- + Basic water access (`_wat_bas`) is the most prevalent type of access in all three areas, but it is the highest in urban areas (**around 98%**) and lowest in rural areas (**around 72%**).  
- + Limited water access (`_wat_lim`) is most common in rural areas (**around 23%**) and least common in urban areas (**around 1%**).  
- + Unimproved water access (`_wat_unimp`) is highest in rural areas (**around 4%**) and essentially non-existent in urban areas.  
- + Surface water access (`_wat_sur`) is relatively low in all three areas, but it is slightly higher in rural areas (**around 1%**) compared to national and urban areas (**around 0.5%**).    
+ + Basic water access `wat_bas` is the most prevalent type of access in all three areas, but it is the highest in urban areas (**around 98%**) and lowest in rural areas (**around 72%**).  
+ + Limited water access `wat_lim` is most common in rural areas (**around 23%**) and least common in urban areas (**around 1%**).  
+ + Unimproved water access `wat_unimp` is highest in rural areas (**around 4%**) and essentially non-existent in urban areas.  
+ + Surface water access `wat_sur` is relatively low in all three areas, but it is slightly higher in rural areas (**around 1%**) compared to national and urban areas (**around 0.5%**).    
   
 
 ### Distribution of data within each area:
@@ -119,15 +169,15 @@ Percentage access levels for each service category:
   +	`wat_unimp_x_`: Unimproved access  
   +	`wat_sur_x_`: Surface water  
 
-1.	National Population Size Impact:
+**1.	National Population Size Impact**
    
 ![National distribution of access to water per service level](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/f2417835-8214-4197-8a73-54f9341c45f0)
 
-2.	Urban Population Size Impact:  
+**2.	Urban Population Size Impact**  
 
   ![Urban distribution of access to water per service level](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/21eef37e-8a06-49a2-881f-dc0243114c46)
 
-  3.	Rural Population Size Impact:  
+  **3.	Rural Population Size Impact**  
 
    ![Rural distribution of access to water per service level](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/ce59cac0-c955-4520-9690-ff5c62fd5dca)
 
@@ -141,8 +191,7 @@ This section delves into exploring the relationship between income groups and ac
 ##### o	Set values to:
   + Sum of population size `pop_n`.
   + Average urban share `pop_u`.
-    
-•	Average national share of each access level: `wat_bas_n`, `wat_lim_n`, `wat_unimp_n`, and `wat_sur_n`.
+  + Average national share of each access level: `wat_bas_n`, `wat_lim_n`, `wat_unimp_n`, and `wat_sur_n`.
 
 ##### 2.	Visualization:    
 o	**Sorting the X-Axis:** To enhance analysis, convert the text `income_group` column to numerical values:  
