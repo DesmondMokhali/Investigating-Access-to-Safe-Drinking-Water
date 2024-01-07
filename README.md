@@ -47,6 +47,7 @@ This project investigates access to safe and affordable drinking water, focusing
 - Anyone interested in global development and water sustainability
 
  ## Observations:  
+![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7caf77bf-d728-4ba2-bd4c-f53ffbe65c6e)
 
 +  The analysis provides actionable insights into the water crisis in Sub-Saharan Africa. Despite some progress, the region is projected to achieve full access to water only by approximately **2080** at the current rate of change.
 +  This information forms the basis for a compelling narrative about the urgent need for intervention in Sub-Saharan Africa to address the water crisis. Without significant efforts, millions of Africans will continue to face a scarcity of clean water for the next **~60 years**. This narrative underscores the importance of targeted interventions and policy measures to improve water access in the region.
@@ -80,7 +81,9 @@ C.	Download the **Estimates on the use of water (2020)** dataset as a CSV.
 D.	**Import** the file into a blank spreadsheet.  
   
 **2.1. Addressing Semicolon Separation:**  
-The original data used semicolon separators, causing header separation issues during import. We tackled this in two steps:  
+The original data used semicolon separators, causing header separation issues during import.   
+  
+We tackled this in two steps:  
    
 **I.	Utilizing Google Sheets' "Text to columns" function:** This efficiently split headers based on semicolons.  
 
@@ -107,7 +110,7 @@ To ensure successful import and data completeness, we performed the following ch
 
 
 
-### 1. Comparing world population estimates with JMP data to understand the bigger picture.    
+### 3. Comparing world population estimates with JMP data to understand the bigger picture.    
   
 Here, we calculated the total national population using the `pop_n` feature (in thousands) and converted it to billions for comparison with the estimated global population:   
   
@@ -124,7 +127,7 @@ Here, we calculated the total national population using the `pop_n` feature (in 
                                     
   This ensures consistent unit representation for accurate analysis.  
     
-### 2. Analysing the distribution of urban vs. rural populations.
+### 4. Analysing the distribution of urban vs. rural populations.
 Delved deeper into data and calculated the Total urban population, the Estimated urban share, Total urban share, Difference in the estimated and the Global population, estimated and Urban population,and estimated and Urban share.  
   
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/12029751-288d-45c8-8920-5f460ad2d511)
