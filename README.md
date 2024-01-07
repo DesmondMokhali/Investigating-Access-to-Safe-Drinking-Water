@@ -1,11 +1,11 @@
 # Project Overview 
 ## Investigating Access to Safe Drinking Water
 
-This project investigates access to safe and affordable drinking water, focusing on inequalities in service levels between different countries and regions. It analyses data from the WHO/UNICEF Joint Monitoring Programme (JMP) to answer questions regarding inequalities in access to safe drinking water.
+This project investigates access to safe and affordable drinking water, focusing on inequalities in service levels between different countries and regions. It analyses data from the WHO/UNICEF Joint Monitoring Programme (JMP) to answer questions regarding inequalities in access to safe drinking water (2000 -2020).
 
 ![191121-water-crisis-report-main-kh](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/651c76c8-3705-4729-8ec1-883299a201d4)
 
-
+[Nhung Le](https://www.nbcnews.com/news/latino/when-it-comes-access-clean-water-race-still-strongest-determinant-n1089606)
 ## Key Points:
 
 - **Data:** WHO/UNICEF JMP data on access to drinking water (2000-2020)
@@ -13,7 +13,7 @@ This project investigates access to safe and affordable drinking water, focusing
 - **Analysis:**
 
 ### Part 1:
-- Comparing world population estimates with JMP data to understand the bigger picture.
+- Comparing world population estimates with JMP on the use of water (2020) data to understand the bigger picture.
 - Analysing the distribution of urban vs. rural populations.
 - Identifying trends and patterns in water access across different regions.
 - Comparing access measures across various types of areas.
@@ -37,7 +37,7 @@ This project investigates access to safe and affordable drinking water, focusing
   
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7e52eb0b-7469-4d14-8519-07c69bf1d701)
 
-Figure 1: UNITED NATIONS SDGs
+[United Nations SDGs](https://www.globalgoals.org/goals/)
 
 ## Target Audience:
 
@@ -46,17 +46,25 @@ Figure 1: UNITED NATIONS SDGs
 - Policymakers
 - Anyone interested in global development and water sustainability
 
-  Findings
+ ## Observations:  
+
++  The analysis provides actionable insights into the water crisis in Sub-Saharan Africa. Despite some progress, the region is projected to achieve full access to water only by approximately **2080** at the current rate of change.
++  This information forms the basis for a compelling narrative about the urgent need for intervention in Sub-Saharan Africa to address the water crisis. Without significant efforts, millions of Africans will continue to face a scarcity of clean water for the next **~60 years**. This narrative underscores the importance of targeted interventions and policy measures to improve water access in the region.
+
+
+     
   ## Part 1
 
-### 1 Comparing world population estimates with JMP data to understand the bigger picture.  
-Here, we calculated the total national population using the pop_n feature (in thousands) and converted it to billions for comparison with the estimated global population:   
+### 1. Comparing world population estimates with JMP data to understand the bigger picture.    
+  
+Here, we calculated the total national population using the `pop_n` feature (in thousands) and converted it to billions for comparison with the estimated global population:   
   
 **Estimated Global Population (billion)** = `7.821 billion`   
    
 **Total Global Population (billion)** = `SUM (pop_n) / 1000000`  
                                   = `SUM ('Estimates on the use of water (2020)’! C2:C214)/1000000`  
                                   = `7.786695108`  
+![Tot glob pop](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/9e24e8b0-5692-4d6d-95ae-6a95e0dfb24e)
 
                                     
   This ensures consistent unit representation for accurate analysis.  
