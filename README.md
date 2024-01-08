@@ -145,8 +145,8 @@ Note that we divided `pop_u` (percentage) by 100 before multiplying.
 The estimated world urban population in **2020** was **55%** of the total population (**7.821 billion** based on the *"Global 2020 Report"* sheet). This calculation looks like:     
   
 **Estimated Urban Population (billion)**  
-+                                   = (55/100) * 7.821
-                                    = 4.30155
++                 = (55/100) * 7.821
+                  = 4.30155
                                   
 **Additionally**, the urban share in the *"Global 2020 Report"* sheet was calculated using the total national population `pop_n` and the total urban population `pop_u_val`.   
   
@@ -212,7 +212,7 @@ Similarly, we can calculate the percentage difference for both total urban popul
   	
       + **X-axis (Independent):** National population size `pop_n`.
 
-      + **Y-axis (Dependent):**Urban and rural share percentages `pop_u` and `pop_r`.
+      + **Y-axis (Dependent):** Urban and rural share percentages `pop_u` and `pop_r`.
   
 2. **Rural Share Calculation:**  
   We already have urban share in `pop_u`, but not rural. Assuming two groups, create a new feature:
@@ -228,8 +228,8 @@ Similarly, we can calculate the percentage difference for both total urban popul
     Some large `pop_n` values obscure the chart. To improve readability, change X-axis Unit: Convert `pop_n` to millions (rounded):
   
    **pop_n (m)**
-+ 	  = ROUNDUP (pop_n/1000)
-          = ROUNDUP (C2/1000)
++ 	    = ROUNDUP (pop_n/1000)
+           = ROUNDUP (C2/1000)
   	    	
 Update the chart's X-axis to `pop_n (m)`, using **Aggregate > Average** for both series. Rename the axis accordingly.
 
@@ -238,10 +238,26 @@ Update the chart's X-axis to `pop_n (m)`, using **Aggregate > Average** for both
   ![National population versus urban and rural share 2020](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/886d842d-542f-4554-a5ed-4440dd8c041c)
   
   
-### 3 Identifying trends and patterns in water access across different regions.
+### 5 Identifying trends and patterns in water access across different regions.
 This section delves into analysing national access to different water service levels (basic, limited, etc.) using both descriptive statistics and visualizations.
 
-**Descriptive Statistics:**     
+### 5.1	Measures of Central Tendency and Spread:
+  
+**5.1.1 Maximum and Minimum Values:**   
+We first determine the range of each service level percentage (e.g., wat_bas_n, wat_lim_n, etc.) on the *"Global 2020 Report"* sheet using `MAX ()` and `MIN ()` functions.
+  
+**5.1.2	Addressing Rounded Values:**  
+Some rounded values might exceed 100%. To tackle this, we create a new feature for each service level:
+  
+**wat_bas_n (rounded)**   
++               = FLOOR (wat_bas_n)
+    
+This ensures values remain within the expected range (0-100%).  
+     
+**5.1.3	Handling #VALUE! Errors:**  
+If rounding generates **#VALUE!** errors, we utilize filters to identify and replace them with text **NAN**. This enables proper calculation of maximum values on the "Global 2020 Report"* sheet.
+  
+**5.2 Descriptive Statistics:**     
 We calculate various descriptive statistics for each service level percentage:    
     
 ![Central tendency](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/1081d77f-00c3-4542-8900-b5d2e07c3cd6)
