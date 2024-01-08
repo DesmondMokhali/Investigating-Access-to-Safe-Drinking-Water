@@ -696,14 +696,13 @@ d. The average Annual Rates of Change in urban areas per region.
 + Each bubble represents a region, with its position determined by two factors:   
 	+ **X-axis:** `ARC_n` (National Annual Rate of Change) - This indicates the overall change in access for the entire country.    
 	+ **Y-axis:** `ARC_r` (Rural Annual Rate of Change) - This shows the specific change in access within rural areas of the region.  
-+ The size of the bubble represents another important factor 
-       + **Pop_n (National Population):** The larger the bubble, the more significant the population of the region it represents.
++ The size of the bubble represents another important factor.`Pop_n` (National Population). The larger the bubble, the more significant the population of the region it represents.
   
 
 
 
 
-### C.Weaving ARCs into a Story
+### 6. Weaving ARCs into a Story
  
 
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/ab8111a9-b813-4ee8-98e1-a045310d68c6)
@@ -711,8 +710,8 @@ d. The average Annual Rates of Change in urban areas per region.
 
 
 
-+  The analysis provides actionable insights into the water crisis in Sub-Saharan Africa. Despite some progress, the region is projected to achieve full access to water only by approximately 2080 at the current rate of change.
-+  This information forms the basis for a compelling narrative about the urgent need for intervention in Sub-Saharan Africa to address the water crisis. Without significant efforts, millions of Africans will continue to face a scarcity of clean water for the next ~60 years. This narrative underscores the importance of targeted interventions and policy measures to improve water access in the region.
++  The analysis provides actionable insights into the water crisis in **Sub-Saharan Africa**. Despite some progress, the region is projected to achieve full access to water only by approximately **2080** at the current rate of change.
++  This information forms the basis for a compelling narrative about the urgent need for intervention in Sub-Saharan Africa to address the water crisis. Without significant efforts, millions of Africans will continue to face a scarcity of clean water for the next **~60 years**. This narrative underscores the importance of targeted interventions and policy measures to improve water access in the region.
 
 
 
