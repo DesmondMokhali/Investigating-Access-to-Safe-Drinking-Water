@@ -37,7 +37,7 @@ This project investigates access to safe and affordable drinking water, focusing
   
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7e52eb0b-7469-4d14-8519-07c69bf1d701)
 
-[United Nations SDGs](https://www.globalgoals.org/goals/)
+[United Nations SDGs](https://www.globalgoals.org/goals/6-clean-water-and-sanitation/)
 
 ## Target Audience:
 
@@ -55,6 +55,8 @@ This project investigates access to safe and affordable drinking water, focusing
 
      
   ## Part 1
+  
+  ## Understanding the data
 
 ### 1. Data Familiarization:
 **Dataset:** WHO/UNICEF JMP Estimates on the Use of Water (2020)  
@@ -359,56 +361,61 @@ It's important to remember that this data visualization only provides a snapshot
   
 ### 1. Becoming Familiar with the Dataset  
   
-   a) To gain further insights, we extended our examination to the **World Health Organization (WHO)/United Nations Children's Fund (UNICEF) Joint Monitoring Programme (JMP) Estimates** on the Use of Water dataset. This dataset spans from the year **2000** to **2020**, broadening the **temporal scope** of our analysis.    
+   A) To gain further insights, we extended our examination to the World Health Organization (WHO)/United Nations Children's Fund (UNICEF) Joint Monitoring Programme (JMP) Estimates on the Use of Water dataset. This dataset spans from the year **2000 to 2020**, broadening the temporal scope of our analysis.    
      
-   b) We imported the dataset titled **"Estimates on the Use of Water (2000-2020).csv"** to discern any variations from the dataset used in the preliminary phase of the project.    
+   A) We imported the dataset titled **"Estimates on the Use of Water (2000-2020).csv"** to discern any variations from the dataset used in the preliminary phase of the project.    
      
-   c) Upon reviewing the column names, a notable alteration was identified: the removal of the `income_group` feature and the addition of a `year` feature.    
+   C) Upon reviewing the column names, a notable alteration was identified: the removal of the `income_group` feature and the addition of a `year` feature.    
    
 ### 2. Investigating Year Representation   
 
-### 1.	Determining the Years Recorded: 
-   + To understand the temporal scope of our dataset, we first investigate the years during which data were recorded.  
+### 2.1	Determining the Years Recorded: 
+   + To understand the temporal scope of our dataset, we first investigate the years during which data were recorded.
+
+### 2.1.1	Sorting the Data:  
    +	To observe the representation of years for each country, we employ a meticulous sorting method. This involves freezing the header row to maintain context and using the **Data > Sort range > Advanced range sort** options to sort by `country name` (Column A) and then by `year` (Column B).  
 
-![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/725a84df-625b-45d0-8034-ec4e1bf6d478)
 
-
-
-
-
-### 3.	Identifying Data Collection Frequency:  
-  +	A preliminary assessment reveals that data entries were not recorded for every year in each country. To account for this variability when examining temporal trends, we must determine if data were collected only twice per country.  
-### 1. Calculating Average Year Difference 
+![Year_name](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/2c5de8f5-1c95-4116-885c-4284b1611ac6)
+  
+### 2.2. Calculating Average Year Difference 
   + In the dataset sheet, a new column named `y_diff` (year difference) is introduced to calculate the difference in years between consecutive entries for each country.    
-  + An if statement is implemented to subtract the second year from the first year only if the country name matches between consecutive rows. This ensures that the y_diff is calculated only for entries pertaining to the same country.    
+  + An **IF statement** is implemented to subtract the second year from the first year only if the country name matches between consecutive rows. This ensures that the y_diff is calculated only for entries pertaining to the same country.
+          
+**Flow Chart**
+![y_dif_flow](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/762891d7-6ad1-49a4-a783-01611b4b2a80)  
 
-![y_dif_flow](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/762891d7-6ad1-49a4-a783-01611b4b2a80)  ![y_dif_pseudo](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/74457b08-00a8-496b-8aa1-c621774a1a49)
+**Pseudocode**
+*        START
+         IF name(n+1) == name(n) then 
+         y_diff = year (n+1) - year (n)
+         Else
+         y_diff = ""
+         End if
+         END
 
 
-
-
-If Statement   
-Y_diff    
+**If Statement**   
+  
+**Y_diff**    
 +          `= IF(A3=A2,B3-B2,"")`  
   
-### 3.	Detecting Duplicate Rows:
-   
-•	By checking for instances where `y_diff` equals 0, we can identify and subsequently remove duplicate rows from the dataset.  
+### 2.3	Detecting Duplicate Rows:
+ + By checking for instances where `y_diff` equals 0, we can identify and subsequently remove duplicate rows from the dataset.  
   
-### Reasoning Behind y_diff = 0:  
-•	The assumption is that if `y_diff` equals 0, it signifies duplicate rows as it implies the same year for consecutive entries of the same country.  
+**Reasoning Behind y_diff = 0:**  
++ The assumption is that if `y_diff` equals 0, it signifies duplicate rows as it implies the same year for consecutive entries of the same country.  
     
-### 4.	Summary Sheet Analysis:  
+### 2.4 Summary Sheet Analysis:  
 On the newly created summary sheet, the **average**, **minimum**, and **maximum** `year differences` are calculated, rounded to two decimal places.  
   
-Average Year Difference:    
+**Average Year Difference:**    
   +             = ROUND (AVERAGE (y_diff), 2)
           
- Minimum Year Difference:  
+ **Minimum Year Difference:**  
   +              = ROUND (MIN (y_diff), 2)
             
- Maximum Year Difference:  
+ **Maximum Year Difference:**  
   +              = ROUND (MAX (y_diff), 2)   
              
 The average year difference is found to be **4.8**, the minimum is **1**, and the maximum is **5**.  
