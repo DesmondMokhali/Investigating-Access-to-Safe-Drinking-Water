@@ -320,24 +320,51 @@ This section delves into exploring the relationship between income groups and ac
 
 ##### 2.	Visualization:    
 o	**Sorting the X-Axis:** To enhance analysis, convert the text `income_group` column to numerical values:  
-  +      NaN becomes 0.  
-  +      Low income" becomes 1.  
-  +      Lower middle income" becomes 2.  
-  +      Upper middle income" becomes 3.  
-  +      High income" becomes 4.  
+  +      "NaN" becomes 0.  
+  +      "Low income" becomes 1.  
+  +      "Lower middle" income" becomes 2.  
+  +      "Upper middle income" becomes 3.  
+  +      "High income" becomes 4.  
 
   ![PIVOT](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/72116506-e5f1-479c-99db-6fe4c294f212)
 
----
-### Part 2: Transforming the Data  
-  
+**Overall access:**  
+  + High-income groups have the highest average share of both urban and basic water access, while low-income groups have the lowest. This suggests a clear correlation between income level and access to improved water 
+    services.
+       
+  + The gap between high and low-income groups is particularly stark for basic water access. This highlights the potential challenge of water scarcity faced by low-income communities.
+      
+**Access types:**  
+ + As income level increases, the average share of basic water access increases, while the share of unimproved, limited and surface water access decreases. This indicates that higher-income groups have better access to 
+   reliable and safe water sources.  
+    
+ + The share of limited water access remains relatively constant across income groups.This could be due to various factors, such as the limitations of infrastructure development in certain areas or the specific needs of 
+   communities beyond basic piped water.
+     
+ **Urban vs rural:**  
+ 
+  + Urban populations within each income group have a higher average share of basic water access compared to their rural counterparts. This suggests that urbanization likely plays a role in improving access to water, 
+    although income level remains a significant factor.
+      
+**Limitations:**  
+It's important to remember that this data visualization only provides a snapshot of the situation at a specific point in time. Analyzing data over time could reveal trends and changes in access patterns  
+    
+![income_group_vs_water_access](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/49220d60-8317-4fbf-9d34-6d00de2674f0)
 
+
+-----------  
+## Part 2
+
+### Transforming the Data  
+  
 ### 1. Becoming Familiar with the Dataset  
   
-   a) To gain further insights, we extended our examination to the **World Health Organization (WHO)/United Nations Children's Fund (UNICEF) Joint Monitoring Programme (JMP) Estimates** on the Use of Water dataset. This dataset spans from the year **2000** to **2020**, broadening the **temporal scope** of our analysis.  
-   b) We imported the dataset titled **"Estimates on the Use of Water (2000-2020).csv"** to discern any variations from the dataset used in the preliminary phase of the project.  
-   c) Upon reviewing the column names, a notable alteration was identified: the removal of the `income_group` feature and the addition of a `year` feature.  
- 
+   a) To gain further insights, we extended our examination to the **World Health Organization (WHO)/United Nations Children's Fund (UNICEF) Joint Monitoring Programme (JMP) Estimates** on the Use of Water dataset. This dataset spans from the year **2000** to **2020**, broadening the **temporal scope** of our analysis.    
+     
+   b) We imported the dataset titled **"Estimates on the Use of Water (2000-2020).csv"** to discern any variations from the dataset used in the preliminary phase of the project.    
+     
+   c) Upon reviewing the column names, a notable alteration was identified: the removal of the `income_group` feature and the addition of a `year` feature.    
+   
 ### 2. Investigating Year Representation   
 
 ### 1.	Determining the Years Recorded: 
