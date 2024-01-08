@@ -50,7 +50,7 @@ This project investigates access to safe and affordable drinking water, focusing
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7caf77bf-d728-4ba2-bd4c-f53ffbe65c6e)
 
 +  The analysis provides actionable insights into the water crisis in Sub-Saharan Africa. Despite some progress, the region is projected to achieve full access to water only by approximately **2080** at the current rate of change.
-+  This information forms the basis for a compelling narrative about the urgent need for intervention in Sub-Saharan Africa to address the water crisis. Without significant efforts, millions of Africans will continue to face a scarcity of clean water for the next **~60 years**. This narrative underscores the importance of targeted interventions and policy measures to improve water access in the region.
++  This information forms the basis for a compelling narrative about the urgent need for intervention in **Sub-Saharan Africa** to address the water crisis. Without significant efforts, millions of Africans will continue to face a scarcity of clean water for the next **~60 years**. This narrative underscores the importance of targeted interventions and policy measures to improve water access in the region.
 
 
      
@@ -100,8 +100,10 @@ The original data used semicolon separators, causing header separation issues du
   
 To ensure successful import and data completeness, we performed the following checks:
   
-+ **Feature presence:** We verified that each of the 16 expected features (columns A-P) had a corresponding column name.  
-+ **Data completeness:** We introduced a new feature, `value_cnt`, using the COUNTA() function (e.g., =COUNTA(A2:P2)) to count non-empty cells in each row, encompassing both text and numerical entries.
++ **Feature presence:**
+  We verified that each of the 16 expected features (columns A-P) had a corresponding column name.  
++ **Data completeness:**
+  We introduced a new feature, `value_cnt`, using the COUNTA() function (e.g., =COUNTA(A2:P2)) to count non-empty cells in each row, encompassing both text and numerical entries.
 
 ![counta22](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7c697d40-bf7d-40d0-8202-f8d270ae95dd)
 
@@ -133,27 +135,27 @@ To facilitate a meaningful comparison, a new sheet named *"Global 2020 Report"* 
 ### 4.1. Urban Population Assessment  
 To delve deeper into urban populations, a new feature, `pop_u_val`, was added to the original dataset. This represents the number of people living in urban areas per country and was calculated as:  
 
-pop_u_val 
+**pop_u_val**  
 +         = (pop_u /100) * pop_n
           = (D2/100) * C2
   
 Note that we divided `pop_u` (percentage) by 100 before multiplying.  
   
-### 3.2. Estimating World Urban Population    
+### 4.2. Estimating World Urban Population    
 The estimated world urban population in **2020** was **55%** of the total population (**7.821 billion** based on the *"Global 2020 Report"* sheet). This calculation looks like:     
   
-Estimated Urban Population (billion) 
+**Estimated Urban Population (billion)**  
 +                                   = (55/100) * 7.821
                                     = 4.30155
                                   
 **Additionally**, the urban share in the *"Global 2020 Report"* sheet was calculated using the total national population `pop_n` and the total urban population `pop_u_val`.   
   
-%Total Urban share 
+**%Total Urban share**  
 +                 = (%Estimated Urban share/ Total Global Population (billion)) * 100
                   = (B3/B1) * 100
                   = 56.18954386
                 
-### 3.2 Quantifying Differences with Percentage Difference  
+### 4.3 Quantifying Differences with Percentage Difference  
   
 To assess the differences between our dataset's population and the estimated world population, as well as in urban population figures, we employ the powerful tool of percentage difference. This metric reveals the relative magnitude of the difference between two values, expressed as a percentage of their average.  
 **Formula and Calculation:**  
@@ -161,7 +163,7 @@ To assess the differences between our dataset's population and the estimated wor
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/80f40115-1418-48a8-8086-2bed183f0427)
   
 **The standard percentage difference formula is:**  
-% Diff
+**% Diff** 
 +      = (ABS (Value1 - Value2) / AVERAGE (Value1, Value2)) * 100
     
 **where:**  
@@ -170,27 +172,29 @@ To assess the differences between our dataset's population and the estimated wor
     
 **Applying the Formula:**  
   
-### 3.2.1 Dataset vs. Estimated World Population:   
+### 4.3.1 Dataset vs. Estimated World Population:   
 Let's calculate the percentage difference between the total population in our dataset (cell B1) and the estimated world population in 2020 (cell B2):  
   
-% Diff Global Population   
+**% Diff Global Population**   
 +                     = (ABS(B1-B2) / AVERAGE (B1:B2)) * 100
                       = 0.4395894719
                     
 This equation reveals the relative difference between our dataset and the expected global population as a percentage.  
    
-### 3.2.2	Urban Population Comparison:    
+### 4.3.2	Urban Population Comparison:    
 Similarly, we can calculate the percentage difference for both total urban populations and urban share percentages:  
     
 **I.	Total Urban Population:**  
-% Diff Urban Population   
+  
+**% Diff Urban Population**    
 +                    = (ABS (Urban Population in Dataset - Estimated Urban Population) /  
                        AVERAGE (Urban Population in Dataset, Estimated Urban Population)) * 100  
                      = (ABS(B3-B4)/AVERAGE (B3:B4)) *100  
                      = 1.700119067  
     
-**II.	Urban Share Percentage:**    
-% Diff Urban Share   
+**II.	Urban Share Percentage:**   
+   
+**% Diff Urban Share**     
 +                  = (ABS (Urban Share % in Dataset - Estimated Urban Share %) /    
 		      AVERAGE (Urban Share % in Dataset, Estimated Urban Share %)) * 100      
                    = (ABS(B5-B6)/AVERAGE (B5:B6)) *100    
@@ -199,12 +203,41 @@ Similarly, we can calculate the percentage difference for both total urban popul
   
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/12029751-288d-45c8-8920-5f460ad2d511)
   
-Used a **line chart** to analyse the share of national populations living in urban versus rural areas with a visualization  
+### 4.4 Visualizing Population Size
+       
+### 4.4.1 Urban vs. Rural Share:  
+  
+1. **Line Chart:**  
+   Create a line chart on the *"Global 2020 Report"* sheet.
+  	
+      + **X-axis (Independent):** National population size `pop_n`.
+
+      + **Y-axis (Dependent):**Urban and rural share percentages `pop_u` and `pop_r`.
+  
+2. **Rural Share Calculation:**  
+  We already have urban share in `pop_u`, but not rural. Assuming two groups, create a new feature:
+  
+ **pop_r** 
++    	= 100 - pop_u
+        = 100 – Q2
+      
+3. **Plot the Data:**  
+   Add `pop_n` (X-axis) and `pop_u`, `pop_r` (Y-axes) as series. Title the chart and axes appropriately.
+   
+4. **Outlier Challenge:**  
+    Some large `pop_n` values obscure the chart. To improve readability, change X-axis Unit: Convert `pop_n` to millions (rounded):
+  
+   **pop_n (m)**
++ 	  = ROUNDUP (pop_n/1000)
+          = ROUNDUP (C2/1000)
+  	    	
+Update the chart's X-axis to `pop_n (m)`, using **Aggregate > Average** for both series. Rename the axis accordingly.
+
+ 
   
   ![National population versus urban and rural share 2020](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/886d842d-542f-4554-a5ed-4440dd8c041c)
-
-
-
+  
+  
 ### 3 Identifying trends and patterns in water access across different regions.
 This section delves into analysing national access to different water service levels (basic, limited, etc.) using both descriptive statistics and visualizations.
 
