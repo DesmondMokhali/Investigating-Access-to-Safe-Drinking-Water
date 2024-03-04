@@ -6,48 +6,41 @@ This project explores global inequalities in access to safe and affordable drink
 ![191121-water-crisis-report-main-kh](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/651c76c8-3705-4729-8ec1-883299a201d4)
 
 [Nhung Le](https://www.nbcnews.com/news/latino/when-it-comes-access-clean-water-race-still-strongest-determinant-n1089606)
+
+## Project Goals:
+
+- Gain insights into global access to safe drinking water.
+- Identify and understand inequalities in access across countries and regions.
+- Analyze trends and changes in access over time.
+- Contribute to achieving Sustainable Development Goal (SDG) 6: Ensure availability and sustainable management of water and sanitation for all.
+
+![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7e52eb0b-7469-4d14-8519-07c69bf1d701)
+
+[United Nations SDGs](https://www.globalgoals.org/goals/6-clean-water-and-sanitation/)
+
 ## Key Points:
 
 - **Data:** WHO/UNICEF JMP data on access to drinking water (2000-2020)
 - **Focus:** Inequalities in access to safe drinking water across countries and regions
 
- **Analysis:**
+### Analysis:
+### Part 1: Understanding the Landscape (2020 Data)
+- **Global context:** Compare world population estimates with JMP data to understand access discrepancies.
+- **Urban vs. rural disparities:** Analyze the distribution of populations and their access to water.
+- **Regional trends:** Identify patterns in water access across different geographic regions.
+- **Access by area type:** Compare access metrics in various regions, including urban, rural, and other settings.
+- **Population size and access:** Analyze national, urban, and rural access based on population size.
+- **Income and access:** Investigate the interplay between population size, urbanization, income levels, and water access.
 
-### Part 1:
-- Comparing world population estimates with JMP on the use of water (2020) data to understand the bigger picture.
-- Analysing the distribution of urban vs. rural populations.
-- Identifying trends and patterns in water access across different regions.
-- Comparing access measures across various types of areas.
-- Analysing national, urban, and rural access to water based on population size.
-- Investigating the impact of population size and urbanization on income and water access.
+### Part 2: Tracking Changes Over Time (2000-2020)
+- **Data validation:** Compare the imported dataset with JMP data to ensure consistency.
+- **Temporal analysis:** Determine data coverage years and calculate the average year difference per country.
+- **Change in access:** Calculate Annual Rates of Change (ARC) for national, rural, and urban areas.
+- **Trend analysis:** Analyze changes in access to basic water over time for different areas.
+- **Comparing changes:** Compare ARCs between rural and urban populations and across regions.
+- **Population and change:** Investigate how national population size influences the rate of change in access.
 
-### Part 2:
-- Comparing the imported dataset with JMP data to ensure consistency.
-- Identifying the years represented in the data and calculating the average year difference per country.
-- Calculating the Annual Rates Change (ARC) for national, rural, and urban areas.
-- Analysing changes in access to basic water over time for different areas.
-- Comparing ARCs between rural and urban populations and across different regions.
-- Investigating how national population size influences the ARC.
-
-## Project Goals:
-
-- Gain insights into global access to safe drinking water.
-- Identify inequalities in access between countries and regions.
-- Analyse trends and changes in access over time.
-- Contribute to achieving the Sustainable Development Goal (SDG) 6: Clean water and sanitation for all.
-  
-![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7e52eb0b-7469-4d14-8519-07c69bf1d701)
-
-[United Nations SDGs](https://www.globalgoals.org/goals/6-clean-water-and-sanitation/)
-
-## Target Audience:
-
-- Data scientists
-- Public health professionals
-- Policymakers
-- Anyone interested in global development and water sustainability
-
- ## Observations:  
+ ### Observations:  
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7caf77bf-d728-4ba2-bd4c-f53ffbe65c6e)
 
 +  The analysis provides actionable insights into the water crisis in Sub-Saharan Africa. Despite some progress, the region is projected to achieve full access to water only by approximately **2080** at the current rate of change.
