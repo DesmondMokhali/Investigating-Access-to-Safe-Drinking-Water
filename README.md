@@ -43,14 +43,13 @@ This project explores global inequalities in access to safe and affordable drink
  ### Observations:  
 ![image](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/7caf77bf-d728-4ba2-bd4c-f53ffbe65c6e)
 
-+  The analysis provides actionable insights into the water crisis in Sub-Saharan Africa. Despite some progress, the region is projected to achieve full access to water only by approximately **2080** at the current rate of change.
-+  This information forms the basis for a compelling narrative about the urgent need for intervention in **Sub-Saharan Africa** to address the water crisis. Without significant efforts, millions of Africans will continue to face a scarcity of clean water for the next **~60 years**. This narrative underscores the importance of targeted interventions and policy measures to improve water access in the region.
+Analysis reveals **Sub-Saharan Africa** faces a **60-year wait** for **full water access** at the current pace. This urgent crisis demands immediate action and innovative solutions to ensure everyone has access to clean water.
 
 
      
   ## Part 1
   
-  ## Understanding the data
+  ##  Understanding the Landscape (2020 Data)
 
 ### 1. Data Familiarization:
 **Dataset:** WHO/UNICEF JMP Estimates on the Use of Water (2020)  
@@ -351,7 +350,7 @@ It's important to remember that this data visualization only provides a snapshot
 -----------  
 ## Part 2
 
-### Transforming the Data  
+### Tracking Changes Over Time (2000-2020)
   
 ### 1. Becoming Familiar with the Dataset  
   
