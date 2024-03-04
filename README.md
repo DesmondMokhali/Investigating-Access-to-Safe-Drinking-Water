@@ -1,7 +1,7 @@
 # Project Overview 
-## Investigating Access to Safe Drinking Water
+## Investigating Inequalities in Safe Drinking Water Access (2000-2020)
 
-This project investigates access to safe and affordable drinking water, focusing on inequalities in service levels between different countries and regions. It analyses data from the WHO/UNICEF Joint Monitoring Programme (JMP) to answer questions regarding inequalities in access to safe drinking water (2000 -2020).
+This project explores global inequalities in access to safe and affordable drinking water by analyzing data from the WHO/UNICEF Joint Monitoring Programme (JMP) between 2000 and 2020. It aims to identify and understand disparities in service levels across different countries and regions.
 
 ![191121-water-crisis-report-main-kh](https://github.com/DesmondMokhali/Investigating-Access-to-Safe-Drinking-Water/assets/121891418/651c76c8-3705-4729-8ec1-883299a201d4)
 
@@ -10,7 +10,8 @@ This project investigates access to safe and affordable drinking water, focusing
 
 - **Data:** WHO/UNICEF JMP data on access to drinking water (2000-2020)
 - **Focus:** Inequalities in access to safe drinking water across countries and regions
-- **Analysis:**
+
+ **Analysis:**
 
 ### Part 1:
 - Comparing world population estimates with JMP on the use of water (2020) data to understand the bigger picture.
